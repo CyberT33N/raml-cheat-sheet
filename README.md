@@ -10,13 +10,13 @@ RAML Cheat Sheet with the most needed stuff..
 
 
 # Guides
-- https://raml.org/developers/raml-100-tutorial
+
 
 <br><br>
 
 
 ## RAML 100
-
+- https://raml.org/developers/raml-100-tutorial
 
 
 
