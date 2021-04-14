@@ -31,6 +31,156 @@ RAML Cheat Sheet with the most needed stuff..
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+<br><br>
+
+# Converter
+- https://github.com/raml-org/webapi-parser
+
+## RAML 1.0 to RAML 1.0 - Inline
+```yaml
+const wap = require('webapi-parser').WebApiParser
+const path = require('path')
+
+
+/**
+ * RAML 1.0 to RAML 1.0 - INLINE
+ */
+async function main () {
+  const inPath = path.join(__dirname, 'test.raml')
+  const model = await wap.raml10.parse(`file://${inPath}`)
+
+  const outPath = path.join(__dirname, './generated.raml')
+  console.log('Generating file to:', outPath)
+
+  await wap.raml10.generateFile(model, `file://${outPath}`)
+}
+
+main()
+```
+
+
+<br><br>
+
+
+## RAML 1.0 to Openapi 3.0
+```yaml
+const wap = require('webapi-parser').WebApiParser
+const path = require('path')
+
+/**
+ * RAML 1.0 to Openapi 3.0
+ */
+
+async function main () {
+  const inPath = path.join(__dirname, 'test.raml')
+  const model = await wap.raml10.parse(`file://${inPath}`)
+
+  const outPath = path.join(__dirname, './generated.json')
+  console.log('Generating file to:', outPath)
+
+  await wap.oas30.generateFile(model, `file://${outPath}`)
+}
+
+main()
+```
+
+
+
+
+
+<br><br>
+
+
+## RAML 1.0 to Openapi 2.0
+```yaml
+const wap = require('webapi-parser').WebApiParser
+const path = require('path')
+
+/**
+ * RAML 1.0 to Openapi 2.0
+ */
+
+async function main () {
+  const inPath = path.join(__dirname, 'test.raml')
+  const model = await wap.raml10.parse(`file://${inPath}`)
+
+  const outPath = path.join(__dirname, './generated.json')
+  console.log('Generating file to:', outPath)
+
+  await wap.oas20.generateFile(model, `file://${outPath}`)
+}
+
+main()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 ____________________________________________
 ____________________________________________
