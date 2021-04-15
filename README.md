@@ -62,7 +62,7 @@ ____________________________________________
 - https://github.com/raml-org/webapi-parser
 
 ## RAML 1.0 to RAML 1.0 - Inline
-```yaml
+```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
 
@@ -88,7 +88,7 @@ main()
 
 
 ## RAML 1.0 to Openapi 3.0
-```yaml
+```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
 
@@ -117,7 +117,7 @@ main()
 
 
 ## RAML 1.0 to Openapi 2.0
-```yaml
+```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
 
@@ -146,7 +146,7 @@ main()
 
 
 ## RAML 1.0 to Postman 2.0
-```yaml
+```javascript
 /**
  * RAML 1.0 to Postman 2.0
  */
