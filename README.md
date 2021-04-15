@@ -234,3 +234,226 @@ ____________________________________________
             example: !include examples/Template/get.res.json
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+<br><br>
+
+
+
+# ResourceTypes
+- ResourceTypes is like resource in that it can specify the descriptions, methods, and its parameters. Resource that uses resourceTypes can inherit its nodes. ResourceTypes can use and inherit from other resourceTypes.
+
+<br><br>
+
+
+ResourceType is basically a template that is used to define the descriptions, methods, and parameters that can be used by multiple resources without writing the duplicate code or repeating code.
+
+<br><br>
+
+
+Let's consider an example. Resource songs want to implement two methods like GET and POST. Each HTTP method will have responseTypes, description, usage, etc.
+
+<br><br>
+
+
+Now, we have other requirements that resource artists want to implement two methods like GET and POST. So, we will make use of resourceTypes to implement the GET and POST methods and that can be used by both resources songs and artist and it can even be used by other resources in the future.
+
+
+
+
+```javascript
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/f1bfb7c0-370c-43ea-b6c2-5ec56bbf7513 # 
+title: Songs
+
+resourceTypes: 
+  collection:
+    usage: This API is used by <<resourcePathName>>
+    description: API is used ti retrieve and create <<resourcePathName>>
+    get:
+      description: This API is used to retrieve all details about <<resourcePathName>>
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                <<exampleReference1>>
+    post:
+      description: This API is used to create <<resourcePathName>>
+      body: 
+        application/json:
+          example: |
+            <<exampleReference2>>
+      responses: 
+        201:
+          body: 
+            application/json:
+              example: |
+                {"message":"<<resourcePathName>> created"}
+
+/songs:
+  type: 
+    collection:
+        exampleReference1: |
+          {"Songs":[
+          {"SongID":1,"SongName":"London Dreams"},
+          {"SongID":2,"SongName":"German Whip"}
+          ]}
+        exampleReference2: |
+          {"SongID":1,"SongName":"London Dreams","Singer":"David"}
+/artists:
+  type:
+    collection:
+        exampleReference1: |
+          {"Artists":[
+          {"ArtistID":1,"ArtistName":"David"},
+          {"ArtistID":2,"ArtistName":"John"}
+          ]}
+        exampleReference2: |
+          {"ArtistID":1,"ArtistName":"John","D.O.B":"27 July 1978"}
+
+```
+
+
+
+
+
+
+
+<br><br><br><br>
+
+
+
+
+## Declaring ResourceTypes With HTTP Methods GET and POST
+```javascript
+resourceTypes: 
+  collection:
+    usage: This API is used by <<resourcePathName>>
+    description: API is used ti retrieve and create <<resourcePathName>>
+    get:
+    post:
+```
+
+<br><br>
+
+## Defining the HTTP POST and GET Method ResponseType and Description
+```javascript
+resourceTypes: 
+  collection:
+    usage: This API is used by <<resourcePathName>>
+    description: API is used ti retrieve and create <<resourcePathNam>>
+    get:
+      description: This API is used to retrieve all details about <<resourcePathName>>
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                <<examplereference1>>
+    post:
+      description: This API is used to create <<resourcePathName>>
+      body: 
+        application/json:
+          example: |
+            <<exampleReference2>>
+      responses: 
+        201:
+          body: 
+            application/json:
+              example: |
+                {"message":"<<resourcePathName>> created"}
+```
+
+
+
+<br><br>
+
+## Calling ResourceTypes From Resources
+```javascript
+/songs:
+  type: 
+    collection:
+        exampleReference1: |
+          {"Songs":[
+          {"SongID":1,"SongName":"London Dreams"},
+          {"SongID":2,"SongName":"German Whip"}
+          ]}
+        exampleReference2: |
+          {"SongID":1,"SongName":"London Dreams","Singer":"David"}
+/artists:
+  type:
+    collection:
+        exampleReference1: |
+          {"Artists":[
+          {"ArtistID":1,"ArtistName":"David"},
+          {"ArtistID":2,"ArtistName":"John"}
+          ]}
+        exampleReference2: |
+          {"ArtistID":1,"ArtistName":"John","D.O.B":"27 July 1978"}
+```
