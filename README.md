@@ -142,6 +142,31 @@ main()
 
 
 
+<br><br>
+
+
+## RAML 1.0 to Postman 2.0
+```yaml
+/**
+ * RAML 1.0 to Postman 2.0
+ */
+const fs = require('fs'),
+const Converter = require('raml1-to-postman'),
+const ramlSpec = fs.readFileSync('data-repository-services.raml', {encoding: 'UTF8'});
+
+Converter.convert({ type: 'string', data: ramlSpec },
+  {}, (err, conversionResult) => {
+    if (!conversionResult.result) {
+      console.log('Could not convert', conversionResult.reason);
+    }
+    else {
+      console.log('The collection object is: ', conversionResult.output[0].data);
+      fs.writeFileSync('export.json', JSON.stringify(conversionResult.output[0].data))
+    }
+  }
+);
+```
+
 
 
 
