@@ -174,7 +174,7 @@ main()
  */
 const fs = require('fs'),
 const Converter = require('raml1-to-postman'),
-const ramlSpec = fs.readFileSync('data-repository-services.raml', {encoding: 'UTF8'});
+const ramlSpec = fs.readFileSync('services.raml', {encoding: 'UTF8'});
 
 Converter.convert({ type: 'string', data: ramlSpec },
   {}, (err, conversionResult) => {
