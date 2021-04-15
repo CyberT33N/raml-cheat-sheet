@@ -457,3 +457,269 @@ resourceTypes:
         exampleReference2: |
           {"ArtistID":1,"ArtistName":"John","D.O.B":"27 July 1978"}
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+<br><br>
+
+
+
+# Traits
+- Traits is like function and is used to define common attributes for HTTP method (GET, PUT, POST, PATCH, DELETE, etc) such as whether or not they are filterable, searchable, or pageable.
+
+<br><br>
+
+Traits can be declared in the same RAML file or you can create different files for creating the traits.
+
+<br><br>
+
+Here, you will see how we can implement a response in traits and how it can be called by multiple resources and resourceTypes.
+
+
+```javascript
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/f1bfb7c0-370c-43ea-b6c2-5ec56bbf7513 # 
+title: Songs
+
+traits: 
+    responseMessage:
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                {"message":"<<resourcePathName>> Created"}
+resourceTypes: 
+  collection:
+    usage: This API is used by <<resourcePathName>>
+    description: API is used ti retrieve and create <<resourcePathName>>
+    get:
+      description: This API is used to retrieve all details about <<resourcePathName>>
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                <<exampleReference1>>
+    post:
+      description: This API is used to create <<resourcePathName>>
+      body: 
+        application/json:
+          example: |
+            <<exampleReference2>>
+      is: [responseMessage]
+
+/songs:
+  type: 
+    collection:
+        exampleReference1: |
+          {"Songs":[
+          {"SongID":1,"SongName":"London Dreams"},
+          {"SongID":2,"SongName":"German Whip"}
+          ]}
+        exampleReference2: |
+          {"SongID":1,"SongName":"London Dreams","Singer":"David"}
+/artists:
+  type:
+    collection:
+        exampleReference1: |
+          {"Artists":[
+          {"ArtistID":1,"ArtistName":"David"},
+          {"ArtistID":2,"ArtistName":"John"}
+          ]}
+        exampleReference2: |
+          {"ArtistID":1,"ArtistName":"John","D.O.B":"27 July 1978"}
+/albums:
+  post:
+    body: 
+      application/json:
+        example: |
+          {"AlbumsID":2,"AlbumNameName":"German Whip"}
+    is: [responseMessage]
+```
+
+<br><br>
+
+## Guides
+- https://www.youtube.com/watch?v=lM18GU6blI4
+
+
+
+
+
+<br><br><br><br>
+
+## Calling Traits From Resources
+- Traits can be called by resources using the "is" keyword.
+```javascript
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/f1bfb7c0-370c-43ea-b6c2-5ec56bbf7513 # 
+title: Songs
+
+traits: 
+    responseMessage:
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                {"message":"Data Created"}
+
+/albums:
+  post:
+    body: 
+      application/json:
+        example: |
+          {"AlbumID":1,"AlbumName":"German Whip"}
+    is: [responseMessage]
+```
+
+
+
+
+
+
+
+<br><br>
+
+
+
+## Calling Traits From ResourceTypes
+- Traits can be called by resources using the "is" keyword.
+```javascript
+traits: 
+    responseMessage:
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                {"message":"<<resourcePathName>> Created"}
+resourceTypes: 
+  collection:
+    usage: This API is used by <<resourcePathName>>
+    description: API is used ti retrieve and create <<resourcePathName>>
+    get:
+      description: This API is used to retrieve all details about <<resourcePathName>>
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                <<exampleReference1>>
+    post:
+      description: This API is used to create <<resourcePathName>>
+      body: 
+        application/json:
+          example: |
+            <<exampleReference2>>
+      is: [responseMessage]
+```
