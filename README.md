@@ -59,9 +59,31 @@ ____________________________________________
 <br><br>
 
 # Converter
-- https://github.com/raml-org/webapi-parser
 
-## RAML 1.0 to RAML 1.0 - Inline
+<br><br>
+
+## Local
+- https://www.npmjs.com/package/oas-raml-converter
+- https://www.npmjs.com/package/oas-raml-converter-cli
+- https://github.com/raml-org/webapi-parser
+- https://github.com/postmanlabs/raml1-to-postman
+
+## Online
+- https://mulesoft.github.io/oas-raml-converter/
+- https://www.apimatic.io/
+
+
+
+
+
+<br><br><br><br>
+
+## RAML 1.0
+
+
+<br><br>
+
+#### RAML 1.0 to RAML 1.0 - Inline
 ```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
@@ -87,7 +109,7 @@ main()
 <br><br>
 
 
-## RAML 1.0 to Openapi 3.0
+#### RAML 1.0 to Openapi 3.0
 ```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
@@ -116,7 +138,7 @@ main()
 <br><br>
 
 
-## RAML 1.0 to Openapi 2.0
+#### RAML 1.0 to Openapi 2.0
 ```javascript
 const wap = require('webapi-parser').WebApiParser
 const path = require('path')
@@ -145,7 +167,7 @@ main()
 <br><br>
 
 
-## RAML 1.0 to Postman 2.0
+#### RAML 1.0 to Postman 2.0
 ```javascript
 /**
  * RAML 1.0 to Postman 2.0
