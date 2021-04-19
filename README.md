@@ -70,7 +70,7 @@ ____________________________________________
 
 ## Online
 - https://mulesoft.github.io/oas-raml-converter/
-- https://www.apimatic.io/
+- https://www.apimatic.io/ **SEEMS TO BE THE ONLY FULLY WORKING CONVERTER**
 
 
 
