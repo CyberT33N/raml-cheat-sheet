@@ -352,6 +352,174 @@ ____________________________________________
 
 
 
+# Types (https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#defining-types)
+- Types SHALL either be declared inline where the API expects data, in an OPTIONAL types node at the root of the API, or in an included library. To declare a type, you MUST use a map where the key represents the name of the type and its value is a type declaration.
+
+
+
+
+```yaml
+types:
+  EmailClientsObject:
+   type: object
+   properties:
+      clients:
+      type: object
+        id:
+          type: string
+        client:
+          type: string
+        os:
+          type: string
+        category:
+          type: string
+        browser:
+          type: string
+        image_blocking:
+          type: boolean
+        default:
+          type: boolean
+          default: false
+```
+
+<br><br>
+
+Expteded Result:
+```javascript
+{
+  "clients": {
+    "aol_chr26_win": {
+      "id": "aol_chr26_win",
+      "client": "AOL",
+      "os": "Windows 7",
+      "category": "Web",
+      "browser": "Chrome",
+      "image_blocking": true,
+      "default": true
+    },
+    "aol_ff21_mac": {
+      "id": "aol_ff21_mac",
+      "client": "AOL",
+      "os": "OSX 10.10",
+      "category": "Web",
+      "browser": "Firefox",
+      "image_blocking": true,
+      "default": true
+    }
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+<br><br>
+
+
+
 # ResourceTypes
 - ResourceTypes is like resource in that it can specify the descriptions, methods, and its parameters. Resource that uses resourceTypes can inherit its nodes. ResourceTypes can use and inherit from other resourceTypes.
 
