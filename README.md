@@ -338,6 +338,30 @@ spam:
 
 
 
+<br><br>
+
+## Multiple MIME Types
+```javascript
+body:
+  text/plain:
+    example: |
+      Content der E-Mail als Text.
+      Email wird als Text-Mail gesendet.
+  text/html:
+    example: |
+      <html> <body>
+      Content der E-Mail als HTML. <br>
+      Email wird als HTML-Mail gesendet.
+      </body>
+      </html>
+  application/json:
+    example: !include ../get_extraction_response.json
+```
+
+
+
+
+
 
 
 
