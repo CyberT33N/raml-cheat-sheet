@@ -378,67 +378,154 @@ ____________________________________________
 
 
 
-```yaml
-types:
-  EmailClientsObject:
-   type: object
-   properties:
-      clients:
-      type: object
-        id:
-          type: string
-        client:
-          type: string
-        os:
-          type: string
-        category:
-          type: string
-        browser:
-          type: string
-        image_blocking:
-          type: boolean
-        default:
-          type: boolean
-          default: false
-```
+
+
 
 <br><br>
 
-Expteded Result:
-```javascript
+## Nested Objects
+```
+EmailTestResultObject:
+   type: object
+   properties:
+     /(.*)/:
+       type: object
+       properties:
+          id:
+            type: string
+          display_name:
+            type: string
+          client:
+            type: string
+          os:
+            type: string
+          category:
+            type: string
+          browser:
+            type: string
+          screenshots:
+            type: object
+          thumbnail:
+            type: string
+          status:
+            type: string
+          status_details:
+            type: object
+                
+                      
+/*
 {
-  "clients": {
-    "aol_chr26_win": {
-      "id": "aol_chr26_win",
-      "client": "AOL",
-      "os": "Windows 7",
-      "category": "Web",
-      "browser": "Chrome",
-      "image_blocking": true,
-      "default": true
+  "gmx_chr26_win": {
+    "id": "gmx_chr26_win",
+    "display_name": "GMX Chrome",
+    "client": "GMX",
+    "os": "Windows 7",
+    "category": "Web",
+    "browser": "Chrome",
+    "screenshots": {
+      "default": "https://eoass.s3.amazonaws.com/1329.png"
     },
-    "aol_ff21_mac": {
-      "id": "aol_ff21_mac",
-      "client": "AOL",
-      "os": "OSX 10.10",
-      "category": "Web",
-      "browser": "Firefox",
-      "image_blocking": true,
-      "default": true
+    "thumbnail": "https://eoass.s3.amazonaws.com/_tn.png",
+    "status": "Complete",
+    "status_details": {
+      "submitted": 1568020415,
+      "completed": 1568020451,
+      "attempts": 1
+    }
+  },
+  "yb_ff21_win": {
+    "id": "yb_ff21_win",
+    "display_name": "Yahoo! Firefox",
+    "client": "Yahoo!",
+    "os": "Windows 7",
+    "category": "Web",
+    "browser": "Firefox",
+    "screenshots": {
+      "default": "https://eoass.s3.amazonaws.com/api/29.png"
+    },
+    "thumbnail": "https://eoass.s3.amazonaws.com/_tn.png",
+    "status": "Complete",
+    "status_details": {
+      "submitted": 1568020415,
+      "completed": 1568020423,
+      "attempts": 1
     }
   }
 }
+*/
 ```
 
 
 
 
 
+<br><br>
 
-
-
-
-
+## Arrays
+```
+LinkTestResultObject:
+   type: array
+   items:
+     properties:
+        url:
+          type: string
+        type:
+          type: string
+        redirects:
+          type: array
+        reputation:
+          type: array
+        validationStatus:
+          type: string
+        status:
+          type: object
+        mime:
+          type: string
+        thumbnail:
+          type: string
+        warning:
+          type: boolean
+        alt:
+          type: boolean
+        error:
+          type: boolean
+                
+                      
+/*
+[
+  {
+    "url": "https://s3-eu-central-1.amazonaws.com/facebook_icon.png",
+    "type": "img",
+    "redirects": [],
+    "reputation": [],
+    "validationStatus": "success",
+    "status": {
+      "code": 200,
+      "message": "OK"
+    },
+    "mime": "application/octet-stream",
+    "warning": false,
+    "alt": false,
+    "error": false
+  },
+  {
+    "url": "https://s3-eu-central-1.amazonaws.com/twitter_icon.png",
+    "type": "img",
+    "redirects": [],
+    "reputation": [],
+    "validationStatus": "success",
+    "status": {
+      "code": 200,
+      "message": "OK"
+    },
+    "mime": "application/octet-stream",
+    "warning": false,
+    "alt": false,
+    "error": false
+  }
+]
+*/
+```
 
 
 
