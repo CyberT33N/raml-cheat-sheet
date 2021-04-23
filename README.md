@@ -313,7 +313,27 @@ ____________________________________________
 
 
 
+<br><br>
+____________________________________________
+____________________________________________
+<br><br>
 
+
+
+## optional types
+```javascript
+// nil = null
+spam:
+  type: object | nil
+```
+
+<br><br>
+
+## Use regex for property names
+```javascript
+/(\w+)/:
+  type: object | nil
+```
 
 
 
@@ -415,19 +435,6 @@ Expteded Result:
 
 
 
-
-
-<br><br>
-
-
-
-
-## optional types
-```javascript
-// nil = null
-spam:
-  type: object | nil
-```
 
 
 
