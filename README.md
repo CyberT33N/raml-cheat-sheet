@@ -417,11 +417,17 @@ Expteded Result:
 
 
 
+<br><br>
 
 
 
 
-
+## optional types
+```javascript
+// nil = null
+spam:
+  type: object | nil
+```
 
 
 
