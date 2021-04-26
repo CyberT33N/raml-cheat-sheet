@@ -287,39 +287,14 @@ ____________________________________________
 # Include external Data - Multiple examples
 ```javascript
 #%RAML 1.0
-An example in RAML 1.0:
-
-/{songId}:
-    get:
-      responses:
-        200:
-          body:
-            application/json:
-              type: object
-              properties:
-                title: string
-                description?: string
-                artist:
-                  type: object
-                  properties:
-                    name: string
-                    is_band: boolean
-              examples:
-                song1:
-                  description: Example for a song without description and the artist is not a band.
-                  content:
-                    title: Yesterday
-                    artist:
-                      name: The Beatles
-                      is_band: true
-                song2:
-                  description: Example for a song with description and the artist is a band.
-                  content:
-                    title: How deep is your love
-                    description: That could be a description for the song.
-                    artist:
-                      name: Calvin Harris
-                      is_band: false
+401:
+    body:
+      application/json:
+        type: t.error-response
+        examples:
+          invalidcredentials: !include examples/errors/error-response-1.json
+          accountlocked: !include examples/errors/error-response-2.json
+          accountinactive: !include examples/errors/error-response-3.json
 ```
 
 
